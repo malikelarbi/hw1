@@ -69,14 +69,90 @@
 -- Drop existing tables, so you'll start fresh each time this script is run.
 -- TODO!
 
+DROP TABLE IF EXISTS movies ;
+DROP TABLE IF EXISTS top_cast ;
+
 -- Create new tables, according to your domain model
 -- TODO!
+
+CREATE TABLE movies (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  movie_title TEXT,
+  release_year INTEGER,
+  mpaa_rating TEXT,
+  director TEXT
+);
+
+CREATE TABLE top_cast (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  movie_id INTEGER,
+  movie_title,
+  actor TEXT,
+  character TEXT
+); 
 
 -- Insert data into your database that reflects the sample data shown above
 -- Use hard-coded foreign key IDs when necessary
 -- TODO!
 
+INSERT INTO movies (movie_title, release_year, director, mpaa_rating)
+VALUES ("Batman Begins", "2005", "Christopher Nolan", "PG-13");
+
+INSERT INTO movies (movie_title, release_year, director, mpaa_rating)
+VALUES ("The Dark Night", "2008", "Christopher Nolan", "PG-13");
+
+INSERT INTO movies (movie_title, release_year, director, mpaa_rating)
+VALUES ("The Dark Knight Rises", "2012", "Christopher Nolan", "PG-13");
+
+------------------------------------------------------------
+
+INSERT INTO top_cast (movie_title, actor, character)
+VALUES ("Batman Begins", "Christian Bale", "Bruce Wayne");
+
+INSERT INTO top_cast (movie_title, actor, character)
+VALUES ("Batman Begins", "Michael Caine", "Alfred");
+
+INSERT INTO top_cast (movie_title, actor, character)
+VALUES ("Batman Begins", "Liam Neeson", "Ra's Al Ghul");
+
+INSERT INTO top_cast (movie_title, actor, character)
+VALUES ("Batman Begins", "Katie Holmes", "Rachel Dawes");
+
+INSERT INTO top_cast (movie_title, actor, character)
+VALUES ("Batman Begins", "Gary Oldman", "Commissioner Gordon");
+
+INSERT INTO top_cast (movie_title, actor, character)
+VALUES ("The Dark Knight", "Christian Bale", "Bruce Wayne");
+
+INSERT INTO top_cast (movie_title, actor, character)
+VALUES ("The Dark Knight", "Heath Ledger", "Joker");
+
+INSERT INTO top_cast (movie_title, actor, character)
+VALUES ("The Dark Knight", "Aaron Eckhart", "Harvey Dent");
+
+INSERT INTO top_cast (movie_title, actor, character)
+VALUES ("The Dark Knight", "Michael Caine", "Alfred");
+
+INSERT INTO top_cast (movie_title, actor, character)
+VALUES ("The Dark Knight", "Maggie Gyllenhaal", "Rachel Dawes");
+
+INSERT INTO top_cast (movie_title, actor, character)
+VALUES ("The Dark Knight Rises", "Christian Bale", "Bruce Wayne");
+
+INSERT INTO top_cast (movie_title, actor, character)
+VALUES ("The Dark Knight Rises", "Gary Oldman", "Commissioner Gordon");
+
+INSERT INTO top_cast (movie_title, actor, character)
+VALUES ("The Dark Knight Rises", "Tom Hardy", "Bane");
+
+INSERT INTO top_cast (movie_title, actor, character)
+VALUES ("The Dark Knight Rises", "Joseph Gordon-Levitt", "John Blake");
+
+INSERT INTO top_cast (movie_title, actor, character)
+VALUES ("The Dark Knight Rises", "Anne Hathaway", "Selina Kyle");
+
 -- Prints a header for the movies output
+
 .print "Movies"
 .print "======"
 .print ""
@@ -84,12 +160,32 @@
 -- The SQL statement for the movies output
 -- TODO!
 
+.width 21 5 5 21
+
+SELECT
+  movie_title,
+  release_year,
+  mpaa_rating,
+  director
+
+FROM
+  movies;
+
 -- Prints a header for the cast output
 .print ""
 .print "Top Cast"
 .print "========"
 .print ""
 
-
 -- The SQL statement for the cast output
 -- TODO!
+
+.width 21 25 25
+
+SELECT
+  movie_title,
+  actor,
+  character
+
+FROM top_cast
+; 
